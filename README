@@ -1,0 +1,56 @@
+This is your new Play 2.1 application
+=====================================
+
+This file will be packaged with your application, when using `play dist`.
+
+=====================================
+
+Example code for transloadit integration.
+See disclaimer below.
+
+It is expected that the user has a basic understanding of how transloadit works
+and has created a API key and secret. A template is used in the example code.
+The secure signing must also be enabled in your transloadit account settings.
+
+This is an example Application for integrating with the very nice transloadit
+service.
+
+The application is a standard Play 2.1 application with two routes added and 
+two html templates; one for each route.
+
+One route (GET /upload) is to display an upload form that can be used to 
+generate and send a signed upload request to transload it.
+
+The other route (POST /install) is used to receive the processing metadata 
+returned by the transloadit service.
+
+The template upload.scala.html contains the basic upload form.
+The template install.scala.html displays the data received from transloadit.
+
+Sign.java is used to generate the HmacSha1 signature. 
+
+Application.java contains the relevant methods for generating the signature
+and handling the routes specified above.
+
+A node.js implementation is included to easily compare the generated signatures 
+of the data between the node and java versions.
+See: TransloaditAuthRequest.js 
+Run: node TransloaditAuthRequest.js
+
+A simple unit test for the Sign class is included in ApplicationTest.java.
+Running "play test" will execute the hmac test method, this test will output 
+the same value as running the node.js version: node TransloaditAuthRequest.js.
+
+=====================================
+Code disclaimer information
+This project contains programming examples.
+
+All sample code is provided for illustrative purposes only. 
+These examples have not been thoroughly tested under all conditions. 
+Therefore, I cannot guarantee or imply reliability, serviceability, or 
+function of these programs.
+
+All programs contained herein are provided to you "AS IS" without any 
+warranties of any kind. The implied warranties of non-infringement, 
+merchantability and fitness for a particular purpose are expressly 
+disclaimed.

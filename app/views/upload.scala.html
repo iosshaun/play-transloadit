@@ -1,0 +1,59 @@
+@(paramsValue: String, signatureValue: String )
+
+<html>
+<head>
+  <title>Upload</title>
+  <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+</head>
+<body>
+
+
+<div id="main-wrapper">
+<div id="entry-wrapper">
+<article class="entry">
+<p>
+The form field 'params', value is: 
+</p>
+<blockquote>
+@paramsValue
+</blockquote>
+<p>
+The form field 'signature', value is: 
+</p>
+<blockquote>
+@signatureValue
+</blockquote>
+</article>
+</div>
+<div id="entry-wrapper">
+<article class="entry">
+<p>
+<form id="MyForm" action="http://api2.transloadit.com/assemblies" 
+enctype="multipart/form-data" method="POST">
+
+<input type="hidden" name="params" value="@paramsValue"  />
+<input type="hidden" name="signature" value="@signatureValue"  />
+
+<input type="file" name="my_file" />
+<input type="submit" value="Upload">
+</form>
+</p>
+</article>
+</div>
+
+</div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script type="text/javascript" 
+    src="http://assets.transloadit.com/js/jquery.transloadit2-latest.js"></script>
+<script type="text/javascript">
+   // We call .transloadit() after the DOM is initialized:
+   $(document).ready(function() {
+     $('#MyForm').transloadit({
+        wait: true
+     });
+   });
+</script>
+
+</body>
+</html>
